@@ -14,32 +14,29 @@
                 <div class="card">
                     <h5 class="card-header text-center">Currency Converter </h5>
                     <div class="card-body">
-                        <form>
+                        <form id="request-quote">
                             <div class="form-row">
                               <div class="form-group col-md-3">
-                                <label for="inputCity">Amount</label>
-                                <input type="text" class="form-control" id="inputCity">
+                                <label for="input-amount">Amount</label>
+                                <input type="number" class="form-control" id="input-amount" value="1">
                               </div>
                               <div class="form-group col-md-3">
-                                <label for="inputState">From</label>
-                                <select id="inputState" class="form-control">
-                                  <option selected disabled>Choose...</option>
-                                  <option>...</option>
-                                </select>
+                                <label for="input-from">From</label>
+                                <select id="input-from" class="form-control"></select>
                               </div>
                               <div class="form-group col-md-3">
-                                <label for="inputZip">To</label>
-                                <input type="text" class="form-control" id="inputZip">
+                                <label for="input-to">To</label>
+                                <select id="input-to" class="form-control"></select>
                               </div>
                               <div class="form-group col-md-3">
-                                <label for="inputZip" class="text-center" style="position: relative; z-index: -100;">Coonvert</label>
-                                <input type="submit" class="form-control btn btn-primary " id="">
+                                <label style="position: relative; z-index: -100;">Coonvert</label>
+                                <input type="submit" class="form-control btn btn-primary " id="convert-btn" value="Convert"> 
                               </div>
                             </div>
                           </form>
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <div class="text-center mt-1 mb-5" id="display-result">
+                            
+                          </div>
                     </div>
                   </div>
             </div>
