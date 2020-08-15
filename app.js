@@ -1,4 +1,4 @@
-const countrys =["ADE","AFN","ALL", "AMD","USD", "GBP"];
+const countrys =["AFN","ALL", "AMD","USD", "GBP"];
 const form = document.getElementById('request-quote');
 const inputAmount = document.getElementById('input-amount');
 const inputFrom = document.getElementById('input-from');
@@ -48,17 +48,22 @@ form.addEventListener('submit', function(e){
       if(this.status === 200){
            
           const result= (JSON.parse(this.responseText));
+          
           let rate = result[fromTO];
             rate = (rate * inputValue);
-        
+            console.log(result);
         const htmlResult = `
-                <h5 class="card-title"><span>${inputValue} ${inputFrom.value}</span></h5>
+                <h5 class="card-title"><span>${inputValue} ${inputFrom.value} </span>=</h5>
                 <h1 style="display: inline-block;">${rate} <span style="font-size: 25px;">${inputTo.value}</span></h1>
                 <p class="card-text">1 USD = 184.072 LKR</p>
                 <p class="card-text">1 LKR = 0.00543266 USD</p>        
         `;
 
-        displayResult.innerHTML = htmlResult;
+
+            displayTimeOut(htmlResult);
+            // displayResult.innerHTML = htmlResult;
+
+        
             
       }
  }
@@ -67,3 +72,14 @@ form.addEventListener('submit', function(e){
  xhr.send();
     
 });
+
+function displayTimeOut(htmlResult){
+    const spinner = document.querySelector('.spinner');
+        spinner.classList.remove('d-none');
+        displayResult.classList.add('d-none');
+    setTimeout(()=>{
+        displayResult.classList.remove('d-none');
+        spinner.classList.add('d-none');
+        displayResult.innerHTML = htmlResult;
+    },1000);
+}
