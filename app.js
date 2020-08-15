@@ -35,7 +35,8 @@ form.addEventListener('submit', function(e){
     const inputValue = parseInt(inputAmount.value);
     e.preventDefault();
     const fromTO = `${inputFrom.value}_${inputTo.value}`;
-    const url = `https://free.currconv.com/api/v7/convert?q=${fromTO}&compact=ultra&apiKey=d84757083f9d0f4c08f3`;
+    const toFrom = `${inputTo.value}_${inputFrom.value}`;
+    const url = `https://free.currconv.com/api/v7/convert?q=${fromTO},${toFrom}&compact=ultra&date=2020-05-07&endDate=2020-05-12&apiKey=d84757083f9d0f4c08f3`;
  //create the object
  const xhr = new XMLHttpRequest();
 
@@ -50,13 +51,14 @@ form.addEventListener('submit', function(e){
           const result= (JSON.parse(this.responseText));
           
           let rate = result[fromTO];
+          let toFromRate = result[toFrom];
             rate = (rate * inputValue);
             console.log(result);
         const htmlResult = `
                 <h5 class="card-title"><span>${inputValue} ${inputFrom.value} </span>=</h5>
                 <h1 style="display: inline-block;">${rate} <span style="font-size: 25px;">${inputTo.value}</span></h1>
-                <p class="card-text">1 USD = 184.072 LKR</p>
-                <p class="card-text">1 LKR = 0.00543266 USD</p>        
+                <p class="card-text">1 ${inputTo.value} = ${toFromRate} ${inputFrom.value}</p>
+                <p class="card-text">1 ${inputFrom.value} = ${rate} ${inputTo.value}</p>        
         `;
 
 
