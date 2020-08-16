@@ -31,7 +31,7 @@ function displayYears(inputID){
                 countrys.forEach(country=>{
                     const option = document.createElement('option');
                     option.value = country;
-                    option.textContent = `${results["results"][country]["currencyName"]} - ${country}`;
+                    option.textContent = `${country} - ${results["results"][country]["currencyName"]}`;
                     inputID.appendChild(option);
                     inputID.appendChild(option);
                    
@@ -67,7 +67,7 @@ form.addEventListener('submit', function(e){
           let rate = result[fromTO];
           let toFromRate = result[toFrom];
             rate = (rate * inputValue);
-            console.log(result);
+            
         const htmlResult = `
                 <h5 class="card-title"><span>${inputValue} ${inputFrom.value} </span>=</h5>
                 <h1 style="display: inline-block;">${rate} <span style="font-size: 25px;">${inputTo.value}</span></h1>
