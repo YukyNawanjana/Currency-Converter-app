@@ -19,15 +19,29 @@ function eventListener(){
 
 function displayYears(inputID){
 
+        const currencyDetails = new XMLHttpRequest();
 
-        countrys.forEach(country=>{
-        const option = document.createElement('option');
-        option.value = country;
-        option.textContent = country;
-        inputID.appendChild(option);
-        inputID.appendChild(option);
+        currencyDetails.open('GET','https://free.currconv.com/api/v7/currencies?apiKey=d84757083f9d0f4c08f3', true);
+
+        currencyDetails.onload = function(){
+            if(this.status == 200){
+                const results = (JSON.parse(this.responseText));
+                console.log(results);
+
+                countrys.forEach(country=>{
+                    const option = document.createElement('option');
+                    option.value = country;
+                    const name = results["results"][country]["currencyName"];
+                    //inputID.appendChild(option);
+                    //inputID.appendChild(option);
+                    console.log(name);
+                });
+            }
+        }
+
+        currencyDetails.send();
+
         
-    })
 }
 
 form.addEventListener('submit', function(e){
@@ -36,7 +50,7 @@ form.addEventListener('submit', function(e){
     e.preventDefault();
     const fromTO = `${inputFrom.value}_${inputTo.value}`;
     const toFrom = `${inputTo.value}_${inputFrom.value}`;
-    const url = `https://free.currconv.com/api/v7/convert?q=${fromTO},${toFrom}&compact=ultra&date=2020-05-07&endDate=2020-05-12&apiKey=d84757083f9d0f4c08f3`;
+    const url = `https://free.currconv.com/api/v7/convert?q=${fromTO},${toFrom}&compact=ultra&apiKey=d84757083f9d0f4c08f3`;
  //create the object
  const xhr = new XMLHttpRequest();
 
