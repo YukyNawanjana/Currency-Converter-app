@@ -67,7 +67,8 @@ form.addEventListener('submit', function(e){
           let rate = result[fromTO];
           let toFromRate = result[toFrom];
             rate = (rate * inputValue);
-            
+            rate = rate.toFixed(3);
+            console.log(rate);
         const htmlResult = `
                 <h5 class="card-title"><span>${inputValue} ${inputFrom.value} </span>=</h5>
                 <h1 style="display: inline-block;">${rate} <span style="font-size: 25px;">${inputTo.value}</span></h1>
